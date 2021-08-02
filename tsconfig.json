@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "strict": true,
+    "declaration": true,
+    "module": "CommonJS",
+    "outDir": "dist",
+    "inlineSourceMap": true,
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "lib": [
+        "ES2019"
+      ],
+  },
+  "exclude": ["**/dist/*"]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "pixel-perfect-svg",
+  "version": "0.0.0",
+  "description": "CLI that takes a PNG, GIF, or JPEG file and outputs a pixel perfect SVG",
+  "author": "kagof",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kagof/pixel-perfect-svg"
+  },
+  "bugs": {
+    "url": "https://github.com/kagof/pixel-perfect-svg/issues"
+  },
+  "homepage": "https://github.com/kagof/pixel-perfect-svg",
+  "readme": "README.md",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "bin": {
+    "psvg": "dist/index.js"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts -c .eslintrc",
+    "format": "eslint . --ext .ts -c .eslintrc --fix",
+    "build": "tsc --pretty",
+    "postbuild": "chmod +x dist/index.js",
+    "start": "ts-node src/index.ts",
+    "pretest": "npm run lint && npm run build",
+    "test": "jest",
+    "prelink": "npm run build",
+    "link": "npm link",
+    "prepare": "npm run lint",
+    "prepublishOnly": "npm test",
+    "preversion": "npm run test",
+    "version": "npm run format && git add .",
+    "postversion": "git push && git push --tags",
+    "clean": "rm -rf dist",
+    "cleanModules": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "file-type": "^16.5.2",
+    "get-pixels": "^3.3.3",
+    "ora": "^5.4.1",
+    "untildify": "^4.0.0",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/get-pixels": "^3.3.1",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.10",
+    "@types/ora": "^3.2.0",
+    "@types/rewire": "^2.5.28",
+    "@types/yargs": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "rewire": "^5.0.0",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}

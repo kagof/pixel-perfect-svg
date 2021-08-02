@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "eslint-plugin-prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules":{
+    "semi":"error",
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-trailing-spaces":"error",
+    "comma-dangle":["error", "always-multiline"]
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2019
+  }
+}
