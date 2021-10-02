@@ -19,13 +19,30 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
       - name: Cache dependencies
+        id: cache
         uses: actions/cache@v2
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
       - name: Run tests
-        run: npm test
+        id: verify
+        run: |
+          npm test 2>&1 | tee results.log
+          TEST_EXIT_CODE=${PIPESTATUS[0]:-$?}
+          echo "exit code $TEST_EXIT_CODE" >> results.log
+          echo '::set-output name=TEST_OUTPUT_FILE::results.log'
+          echo "::set-output name=TEST_EXIT_CODE::$TEST_EXIT_CODE"
+          exit "$TEST_EXIT_CODE"
+      - name: Sync main branch verification results to gist
+        id: sync
+        uses: Popsiclestick/gist-sync-action@v1.2.0
+        if: always() && github.ref == 'refs/heads/main'
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/kagof/51cfc9d8c5122fb3581c383ac3ba5a54
+          gist_title: pixel-perfect-svg test results
+          gist_description: Latest pixel-perfect-svg main branch test results ${{ github.run_number }} (${{ github.sha }})
+          github_file: ${{ steps.verify.outputs.TEST_OUTPUT_FILE }}

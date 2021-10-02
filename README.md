@@ -1,5 +1,7 @@
 # pixel-perfect-svg
 
+[![main branch tests](https://github.com/kagof/pixel-perfect-svg/actions/workflows/test.yml/badge.svg)](https://gist.github.com/kagof/51cfc9d8c5122fb3581c383ac3ba5a54)[![npm version](https://img.shields.io/npm/v/pixel-perfect-svg)](https://www.npmjs.com/package/pixel-perfect-svg)
+
 This is a CLI written in Typescript as a yak shave for [IntelliJ Pokémon Progress Bar](https://github.com/kagof/intellij-pokemon-progress). It converts images (PNG, GIF, or JPEG) into an SVG with pixel perfect precision.
 
 The original intended use case for this was creating easily scalable versions of pixel art images.
