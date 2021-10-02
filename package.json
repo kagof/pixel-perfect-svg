@@ -1,6 +1,6 @@
 {
   "name": "pixel-perfect-svg",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "CLI that takes a PNG, GIF, or JPEG file and outputs a pixel perfect SVG",
   "author": "kagof",
   "license": "MIT",
