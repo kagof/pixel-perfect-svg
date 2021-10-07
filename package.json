@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/kagof/pixel-perfect-svg",
   "readme": "README.md",
+  "keywords": ["svg", "png", "cli", "pixel", "art"],
   "main": "dist/index.js",
   "files": [
     "dist/**/*"
